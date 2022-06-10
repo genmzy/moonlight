@@ -1,19 +1,19 @@
-*gruvbox_genmzy.txt*
+*moonlight.txt*
 
-CONTENTS                                     *gruvbox_genmzy-contents*
+CONTENTS                                     *moonlight-contents*
 
-Introduction                                 |gruvbox_genmzy-introduction|
-Installation                                 |gruvbox_genmzy-installation|
-Usage                                        |gruvbox_genmzy-usage|
-Configuration                                |gruvbox_genmzy-configuration|
-FAQ                                          |gruvbox_genmzy-faq|
+Introduction                                 |moonlight-introduction|
+Installation                                 |moonlight-installation|
+Usage                                        |moonlight-usage|
+Configuration                                |moonlight-configuration|
+FAQ                                          |moonlight-faq|
 
 Note: Type |gO| to show the outline of contents.
 
 ==============================================================================
-INTRODUCTION                                           *gruvbox_genmzy-introduction*
+INTRODUCTION                                           *moonlight-introduction*
 
-gruvbox_genmzy is a green based color scheme, it's designed to be warm and soft
+moonlight is a green based color scheme, it's designed to be warm and soft
 in order to protect developers' eyes.
 
 Features~
@@ -26,7 +26,7 @@ Features~
 - Italic support 🎉
 
 ==============================================================================
-INSTALLATION                                           *gruvbox_genmzy-installation*
+INSTALLATION                                           *moonlight-installation*
 
 ------------------------------------------------------------------------------
 
@@ -34,7 +34,7 @@ Via Plugin Manager~
 
     Take [vim-plug](https://github.com/junegunn/vim-plug) for example:
 >
-        Plug 'genmzy/gruvbox_genmzy'
+        Plug 'genmzy/moonlight'
 <
     For better syntax highlighting support, please install
     https://github.com/sheerun/vim-polyglot or https://github.com/nvim-treesitter/nvim-treesitter.
@@ -43,23 +43,23 @@ Via Plugin Manager~
 
 Manually~
 
-    1. Clone the repository: `git clone --depth 1 https://github.com/genmzy/gruvbox_genmzy.git`
+    1. Clone the repository: `git clone --depth 1 https://github.com/genmzy/moonlight.git`
 
-    2. Copy `/path/to/gruvbox_genmzy/autoload/gruvbox_genmzy.vim` to
+    2. Copy `/path/to/moonlight/autoload/moonlight.vim` to
     `~/.vim/autoload/`.
 
-    3. Copy `/path/to/gruvbox_genmzy/colors/gruvbox_genmzy.vim` to
+    3. Copy `/path/to/moonlight/colors/moonlight.vim` to
     `~/.vim/colors/` .
 
-    4. Copy `/path/to/gruvbox_genmzy/doc/gruvbox_genmzy.txt` to
+    4. Copy `/path/to/moonlight/doc/moonlight.txt` to
     `~/.vim/doc/` and execute `:helptags ~/.vim/doc/` to generate help tags.
 
     5. To install [airline](https://github.com/vim-airline/vim-airline) theme,
-    copy `/path/to/gruvbox_genmzy/autoload/airline/themes/gruvbox_genmzy.vim`
+    copy `/path/to/moonlight/autoload/airline/themes/moonlight.vim`
     to `~/.vim/autoload/airline/themes/` .
 
     6. To install [lightline](https://github.com/itchyny/lightline.vim) theme,
-    copy `/path/to/gruvbox_genmzy/autoload/lightline/colorscheme/gruvbox_genmzy.vim`
+    copy `/path/to/moonlight/autoload/lightline/colorscheme/moonlight.vim`
     to `~/.vim/autoload/lightline/colorscheme/` .
 
 ------------------------------------------------------------------------------
@@ -68,11 +68,11 @@ AUR~
 
     There are some packages available for Arch Linux users in AUR:
 
-    - [vim-gruvbox_genmzy-git](https://aur.archlinux.org/pkgbase/vim-gruvbox_genmzy-git/)
-    - [neovim-gruvbox_genmzy-git](https://aur.archlinux.org/pkgbase/neovim-gruvbox_genmzy-git/)
+    - [vim-moonlight-git](https://aur.archlinux.org/pkgbase/vim-moonlight-git/)
+    - [neovim-moonlight-git](https://aur.archlinux.org/pkgbase/neovim-moonlight-git/)
 
 ==============================================================================
-USAGE                                                         *gruvbox_genmzy-usage*
+USAGE                                                         *moonlight-usage*
 
 ------------------------------------------------------------------------------
 
@@ -92,18 +92,18 @@ Vim~
         set background=light
 
         " Set contrast.
-        " This configuration option should be placed before `colorscheme gruvbox_genmzy`.
+        " This configuration option should be placed before `colorscheme moonlight`.
         " Available values: 'hard', 'medium'(default), 'soft'
-        let g:gruvbox_genmzy_background = 'soft'
+        let g:moonlight_background = 'soft'
 
-        colorscheme gruvbox_genmzy
+        colorscheme moonlight
 <
-    See |gruvbox_genmzy-configuration| for more configuration options.
+    See |moonlight-configuration| for more configuration options.
 
     If you want to apply this color scheme temporarily, run this command in
     vim(this may cause broken colors):
 >
-        :colorscheme gruvbox_genmzy
+        :colorscheme moonlight
 <
 ------------------------------------------------------------------------------
 
@@ -112,11 +112,11 @@ Airline~
     To enable [airline](https://github.com/vim-airline/vim-airline) color
     scheme, put this in your vimrc:
 >
-        let g:airline_theme = 'gruvbox_genmzy'
+        let g:airline_theme = 'moonlight'
 <
     To apply it without reloading:
 >
-        :AirlineTheme gruvbox_genmzy
+        :AirlineTheme moonlight
 <
 ------------------------------------------------------------------------------
 
@@ -126,21 +126,21 @@ Lightline~
     scheme, put this in your vimrc:
 >
         let g:lightline = {}
-        let g:lightline.colorscheme = 'gruvbox_genmzy'
+        let g:lightline.colorscheme = 'moonlight'
 
         " Or this line:
-        let g:lightline = {'colorscheme' : 'gruvbox_genmzy'}
+        let g:lightline = {'colorscheme' : 'moonlight'}
 <
     To apply it without reloading:
 >
-        :let g:lightline.colorscheme = 'gruvbox_genmzy'
+        :let g:lightline.colorscheme = 'moonlight'
         :call lightline#init()
         :call lightline#colorscheme()
 <
 ==============================================================================
-CONFIGURATION                                         *gruvbox_genmzy-configuration*
+CONFIGURATION                                         *moonlight-configuration*
 
-Note: the configuration options should be placed before `colorscheme gruvbox_genmzy`
+Note: the configuration options should be placed before `colorscheme moonlight`
 
 E.g.
 >
@@ -149,16 +149,16 @@ E.g.
     endif
     set background=light
 
-    let g:gruvbox_genmzy_background = 'soft'
-    let g:gruvbox_genmzy_enable_italic = 1
-    let g:gruvbox_genmzy_disable_italic_comment = 1
+    let g:moonlight_background = 'soft'
+    let g:moonlight_enable_italic = 1
+    let g:moonlight_disable_italic_comment = 1
 
-    colorscheme gruvbox_genmzy
-    let g:lightline.colorscheme = 'gruvbox_genmzy'
+    colorscheme moonlight
+    let g:lightline.colorscheme = 'moonlight'
 <
 ------------------------------------------------------------------------------
-                                                       *g:gruvbox_genmzy_background*
-g:gruvbox_genmzy_background~
+                                                       *g:moonlight_background*
+g:moonlight_background~
 
 The background contrast used in this color scheme.
 
@@ -167,35 +167,35 @@ The background contrast used in this color scheme.
 
 E.g.
 >
-    let g:gruvbox_genmzy_background = 'soft'
+    let g:moonlight_background = 'soft'
 <
 ------------------------------------------------------------------------------
-                                                    *g:gruvbox_genmzy_enable_italic*
-g:gruvbox_genmzy_enable_italic~
+                                                    *g:moonlight_enable_italic*
+g:moonlight_enable_italic~
 
 To enable italic in this color scheme, set this option to `1`.
 
 E.g.
 >
-    let g:gruvbox_genmzy_enable_italic = 1
+    let g:moonlight_enable_italic = 1
 <
 Note: This option is designed to use with fonts that support cursive italics.
-See |gruvbox_genmzy-faq| for more information.
+See |moonlight-faq| for more information.
 
 ------------------------------------------------------------------------------
-                                           *g:gruvbox_genmzy_disable_italic_comment*
-g:gruvbox_genmzy_disable_italic_comment~
+                                           *g:moonlight_disable_italic_comment*
+g:moonlight_disable_italic_comment~
 
 By default, italic is enabled in `Comment`. To disable italic in `Comment`, set
 this option to `1`.
 
 E.g.
 >
-    let g:gruvbox_genmzy_disable_italic_comment = 1
+    let g:moonlight_disable_italic_comment = 1
 <
 ------------------------------------------------------------------------------
-                                                           *g:gruvbox_genmzy_cursor*
-g:gruvbox_genmzy_cursor~
+                                                           *g:moonlight_cursor*
+g:moonlight_cursor~
 
 Customize the cursor color, only works in GUI clients.
 
@@ -205,21 +205,21 @@ Customize the cursor color, only works in GUI clients.
 
 E.g.
 >
-    let g:gruvbox_genmzy_cursor = 'green'
+    let g:moonlight_cursor = 'green'
 <
 ------------------------------------------------------------------------------
-                                           *g:gruvbox_genmzy_transparent_background*
-g:gruvbox_genmzy_transparent_background~
+                                           *g:moonlight_transparent_background*
+g:moonlight_transparent_background~
 
 To use transparent background, set this option to `1`.
 
 E.g.
 >
-    let g:gruvbox_genmzy_transparent_background = 1
+    let g:moonlight_transparent_background = 1
 <
 ------------------------------------------------------------------------------
-                                           *g:gruvbox_genmzy_sign_column_background*
-g:gruvbox_genmzy_sign_column_background~
+                                           *g:moonlight_sign_column_background*
+g:moonlight_sign_column_background~
 
 By default, the background color of sign column is different from normal text.
 If you want to make it the same as normal text, set this option to `'none'`.
@@ -229,11 +229,11 @@ If you want to make it the same as normal text, set this option to `'none'`.
 
 E.g.
 >
-    let g:gruvbox_genmzy_sign_column_background = 'none'
+    let g:moonlight_sign_column_background = 'none'
 <
 ------------------------------------------------------------------------------
-                                        *g:gruvbox_genmzy_diagnostic_text_highlight*
-g:gruvbox_genmzy_diagnostic_text_highlight~
+                                        *g:moonlight_diagnostic_text_highlight*
+g:moonlight_diagnostic_text_highlight~
 
 Some plugins support highlighting error/warning/info/hint texts, by default
 these texts are only underlined, but you can use this option to also highlight
@@ -244,7 +244,7 @@ the background of them.
 
 E.g.
 >
-    let g:gruvbox_genmzy_diagnostic_text_highlight = 1
+    let g:moonlight_diagnostic_text_highlight = 1
 <
 Currently, the following plugins are supported:
 
@@ -257,8 +257,8 @@ Currently, the following plugins are supported:
 - https://github.com/vim-syntastic/syntastic
 
 ------------------------------------------------------------------------------
-                                        *g:gruvbox_genmzy_diagnostic_line_highlight*
-g:gruvbox_genmzy_diagnostic_line_highlight~
+                                        *g:moonlight_diagnostic_line_highlight*
+g:moonlight_diagnostic_line_highlight~
 
 Some plugins support highlighting error/warning/info/hint lines, but this
 feature is disabled by default in this color scheme. To enable this feature,
@@ -266,7 +266,7 @@ set this option to `1`.
 
 E.g.
 >
-    let g:gruvbox_genmzy_diagnostic_line_highlight = 1
+    let g:moonlight_diagnostic_line_highlight = 1
 <
 Currently, the following plugins are supported:
 
@@ -276,8 +276,8 @@ Currently, the following plugins are supported:
 - https://github.com/vim-syntastic/syntastic
 
 ------------------------------------------------------------------------------
-                                          *g:gruvbox_genmzy_diagnostic_virtual_text*
-g:gruvbox_genmzy_diagnostic_virtual_text~
+                                          *g:moonlight_diagnostic_virtual_text*
+g:moonlight_diagnostic_virtual_text~
 
 Some plugins can use virtual text feature of neovim to display
 error/warning/info/hint information, you can use this option to adjust the
@@ -288,7 +288,7 @@ colors of it.
 
 E.g.
 >
-    let g:gruvbox_genmzy_diagnostic_virtual_text = 'colored'
+    let g:moonlight_diagnostic_virtual_text = 'colored'
 <
 Currently, the following plugins are supported:
 
@@ -299,8 +299,8 @@ Currently, the following plugins are supported:
 - https://github.com/neomake/neomake
 
 ------------------------------------------------------------------------------
-                                                     *g:gruvbox_genmzy_current_word*
-g:gruvbox_genmzy_current_word~
+                                                     *g:moonlight_current_word*
+g:moonlight_current_word~
 
 Some plugins can highlight the word under current cursor, you can use this
 option to control their behavior.
@@ -311,7 +311,7 @@ option to control their behavior.
 
 E.g.
 >
-    let g:gruvbox_genmzy_current_word = 'bold'
+    let g:moonlight_current_word = 'bold'
 <
 Currently, the following plugins are supported:
 
@@ -322,21 +322,21 @@ Currently, the following plugins are supported:
 - https://github.com/prabirshrestha/vim-lsp
 
 ------------------------------------------------------------------------------
-                                           *g:gruvbox_genmzy_lightline_disable_bold*
-g:gruvbox_genmzy_lightline_disable_bold~
+                                           *g:moonlight_lightline_disable_bold*
+g:moonlight_lightline_disable_bold~
 
 By default, bold is enabled in lightline color scheme. To disable bold in
 lightline color scheme, set this option to `1`.
 
 E.g.
 >
-    let g:gruvbox_genmzy_lightline_disable_bold = 1
+    let g:moonlight_lightline_disable_bold = 1
 <
-Note: this configuration option doesn't need to be placed before `colorscheme gruvbox_genmzy`
+Note: this configuration option doesn't need to be placed before `colorscheme moonlight`
 
 ------------------------------------------------------------------------------
-                                               *g:gruvbox_genmzy_better_performance*
-g:gruvbox_genmzy_better_performance~
+                                               *g:moonlight_better_performance*
+g:moonlight_better_performance~
 
 The loading time of this color scheme is very long because too many file types
 and plugins are optimized. This feature allows you to load part of the code on
@@ -346,10 +346,10 @@ Enabling this option will reduce loading time by approximately 50%.
 
 E.g.
 >
-    let g:gruvbox_genmzy_better_performance = 1
+    let g:moonlight_better_performance = 1
 <
 ==============================================================================
-FAQ                                                             *gruvbox_genmzy-faq*
+FAQ                                                             *moonlight-faq*
 
 ------------------------------------------------------------------------------
 
@@ -377,9 +377,9 @@ How to enable cursive italic keywords?~
 
 1. Install a font that supports cursive italics, for example [icursive-nerd-font](https://github.com/sainnhe/icursive-nerd-font).
 
-2. Enable italic keywords in this color scheme: `let g:gruvbox_genmzy_enable_italic = 1`
+2. Enable italic keywords in this color scheme: `let g:moonlight_enable_italic = 1`
 
-3. Disable italic comment(optional): `let g:gruvbox_genmzy_disable_italic_comment = 1`
+3. Disable italic comment(optional): `let g:moonlight_disable_italic_comment = 1`
 
 ------------------------------------------------------------------------------
 
@@ -392,30 +392,30 @@ color looks weird. See https://github.com/sainnhe/gruvbox-material/issues/5#issu
 
 How to use custom colors?~
 >
-    function! s:gruvbox_genmzy_custom() abort
+    function! s:moonlight_custom() abort
       " Link a highlight group to a predefined highlight group.
-      " See `colors/gruvbox_genmzy.vim` for all predefined highlight groups.
+      " See `colors/moonlight.vim` for all predefined highlight groups.
       highlight! link groupA groupB
       highlight! link groupC groupD
     
       " Initialize the color palette.
-      let l:palette = gruvbox_genmzy#get_palette()
+      let l:palette = moonlight#get_palette()
       " Define a highlight group.
       " The first parameter is the name of a highlight group,
       " the second parameter is the foreground color,
       " the third parameter is the background color,
       " the fourth parameter is for UI highlighting which is optional,
       " and the last parameter is for `guisp` which is also optional.
-      " See `autoload/gruvbox_genmzy.vim` for the format of `l:palette`.
-      call gruvbox_genmzy#highlight('groupE', l:palette.red, l:palette.none, 'undercurl', l:palette.red)
+      " See `autoload/moonlight.vim` for the format of `l:palette`.
+      call moonlight#highlight('groupE', l:palette.red, l:palette.none, 'undercurl', l:palette.red)
     endfunction
     
-    augroup gruvbox_genmzyCustom
+    augroup moonlightCustom
       autocmd!
-      autocmd ColorScheme gruvbox_genmzy call s:gruvbox_genmzy_custom()
+      autocmd ColorScheme moonlight call s:moonlight_custom()
     augroup END
     
-    colorscheme gruvbox_genmzy
+    colorscheme moonlight
 <
 Note: Make sure to define the `augroup` before declare the `colorscheme`.
 

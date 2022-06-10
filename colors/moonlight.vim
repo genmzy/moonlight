@@ -1,26 +1,26 @@
 " -----------------------------------------------------------------------------
-" Name:         gruvbox_genmzy
+" Name:         moonlight
 " Description:  Comfortable & Pleasant Color Scheme for Vim
 " Author:       genmzy <genmzy@gmail.com>
-" Website:      https://github.com/genmzy/gruvbox_genmzy
+" Website:      https://github.com/genmzy/moonlight
 " License:      MIT
 " -----------------------------------------------------------------------------
 
 " Initialization: {{{
-let s:configuration = gruvbox_genmzy#get_configuration()
-let s:palette = gruvbox_genmzy#get_palette(s:configuration.background)
+let s:configuration = moonlight#get_configuration()
+let s:palette = moonlight#get_palette(s:configuration.background)
 let s:path = expand('<sfile>:p') " the path of this script
 let s:last_modified = 'Sat Apr 17 04:21:09 AM UTC 2021'
-let g:gruvbox_genmzy_loaded_file_types = []
+let g:moonlight_loaded_file_types = []
 
-if !(exists('g:colors_name') && g:colors_name ==# 'gruvbox_genmzy' && s:configuration.better_performance)
+if !(exists('g:colors_name') && g:colors_name ==# 'moonlight' && s:configuration.better_performance)
   highlight clear
   if exists('syntax_on')
     syntax reset
   endif
 endif
 
-let g:colors_name = 'gruvbox_genmzy'
+let g:colors_name = 'moonlight'
 
 if !(has('termguicolors') && &termguicolors) && !has('gui_running') && &t_Co != 256
   finish
@@ -29,96 +29,96 @@ endif
 " Common Highlight Groups: {{{
 " UI: {{{
 if s:configuration.transparent_background
-  call gruvbox_genmzy#highlight('Normal', s:palette.fg, s:palette.none)
-  call gruvbox_genmzy#highlight('Terminal', s:palette.fg, s:palette.none)
-  call gruvbox_genmzy#highlight('EndOfBuffer', s:palette.bg0, s:palette.none)
-  call gruvbox_genmzy#highlight('FoldColumn', s:palette.grey0, s:palette.none)
-  call gruvbox_genmzy#highlight('Folded', s:palette.grey1, s:palette.none)
-  call gruvbox_genmzy#highlight('SignColumn', s:palette.fg, s:palette.none)
-  call gruvbox_genmzy#highlight('ToolbarLine', s:palette.fg, s:palette.none)
+  call moonlight#highlight('Normal', s:palette.fg, s:palette.none)
+  call moonlight#highlight('Terminal', s:palette.fg, s:palette.none)
+  call moonlight#highlight('EndOfBuffer', s:palette.bg0, s:palette.none)
+  call moonlight#highlight('FoldColumn', s:palette.grey0, s:palette.none)
+  call moonlight#highlight('Folded', s:palette.grey1, s:palette.none)
+  call moonlight#highlight('SignColumn', s:palette.fg, s:palette.none)
+  call moonlight#highlight('ToolbarLine', s:palette.fg, s:palette.none)
 else
-  call gruvbox_genmzy#highlight('Normal', s:palette.fg, s:palette.bg0)
-  call gruvbox_genmzy#highlight('Terminal', s:palette.fg, s:palette.bg0)
-  call gruvbox_genmzy#highlight('EndOfBuffer', s:palette.bg0, s:palette.bg0)
-  call gruvbox_genmzy#highlight('Folded', s:palette.grey1, s:palette.bg1)
-  call gruvbox_genmzy#highlight('ToolbarLine', s:palette.fg, s:palette.bg2)
+  call moonlight#highlight('Normal', s:palette.fg, s:palette.bg0)
+  call moonlight#highlight('Terminal', s:palette.fg, s:palette.bg0)
+  call moonlight#highlight('EndOfBuffer', s:palette.bg0, s:palette.bg0)
+  call moonlight#highlight('Folded', s:palette.grey1, s:palette.bg1)
+  call moonlight#highlight('ToolbarLine', s:palette.fg, s:palette.bg2)
   if s:configuration.sign_column_background ==# 'default'
-    call gruvbox_genmzy#highlight('SignColumn', s:palette.fg, s:palette.bg1)
-    call gruvbox_genmzy#highlight('FoldColumn', s:palette.grey1, s:palette.bg1)
+    call moonlight#highlight('SignColumn', s:palette.fg, s:palette.bg1)
+    call moonlight#highlight('FoldColumn', s:palette.grey1, s:palette.bg1)
   else
-    call gruvbox_genmzy#highlight('SignColumn', s:palette.fg, s:palette.none)
-    call gruvbox_genmzy#highlight('FoldColumn', s:palette.grey0, s:palette.none)
+    call moonlight#highlight('SignColumn', s:palette.fg, s:palette.none)
+    call moonlight#highlight('FoldColumn', s:palette.grey0, s:palette.none)
   endif
 endif
-call gruvbox_genmzy#highlight('IncSearch', s:palette.bg0, s:palette.red)
-call gruvbox_genmzy#highlight('Search', s:palette.bg0, s:palette.yellow)
-call gruvbox_genmzy#highlight('ColorColumn', s:palette.none, s:palette.bg1)
-call gruvbox_genmzy#highlight('Conceal', s:palette.grey1, s:palette.none)
+call moonlight#highlight('IncSearch', s:palette.bg0, s:palette.red)
+call moonlight#highlight('Search', s:palette.bg0, s:palette.yellow)
+call moonlight#highlight('ColorColumn', s:palette.none, s:palette.bg1)
+call moonlight#highlight('Conceal', s:palette.grey1, s:palette.none)
 if s:configuration.cursor ==# 'auto'
-  call gruvbox_genmzy#highlight('Cursor', s:palette.none, s:palette.none, 'reverse')
+  call moonlight#highlight('Cursor', s:palette.none, s:palette.none, 'reverse')
 else
-  call gruvbox_genmzy#highlight('Cursor', s:palette.bg0, s:palette[s:configuration.cursor])
+  call moonlight#highlight('Cursor', s:palette.bg0, s:palette[s:configuration.cursor])
 endif
 highlight! link vCursor Cursor
 highlight! link iCursor Cursor
 highlight! link lCursor Cursor
 highlight! link CursorIM Cursor
 if &diff
-  call gruvbox_genmzy#highlight('CursorLine', s:palette.none, s:palette.none, 'underline')
-  call gruvbox_genmzy#highlight('CursorColumn', s:palette.none, s:palette.none, 'bold')
+  call moonlight#highlight('CursorLine', s:palette.none, s:palette.none, 'underline')
+  call moonlight#highlight('CursorColumn', s:palette.none, s:palette.none, 'bold')
 else
-  call gruvbox_genmzy#highlight('CursorLine', s:palette.none, s:palette.bg1)
-  call gruvbox_genmzy#highlight('CursorColumn', s:palette.none, s:palette.bg1)
+  call moonlight#highlight('CursorLine', s:palette.none, s:palette.bg1)
+  call moonlight#highlight('CursorColumn', s:palette.none, s:palette.bg1)
 endif
-call gruvbox_genmzy#highlight('LineNr', s:palette.grey0, s:palette.none)
+call moonlight#highlight('LineNr', s:palette.grey0, s:palette.none)
 if &diff
-  call gruvbox_genmzy#highlight('CursorLineNr', s:palette.fg, s:palette.none, 'underline')
+  call moonlight#highlight('CursorLineNr', s:palette.fg, s:palette.none, 'underline')
 elseif (&relativenumber == 1 && &cursorline == 0) || s:configuration.sign_column_background !=# 'default'
-  call gruvbox_genmzy#highlight('CursorLineNr', s:palette.fg, s:palette.none)
+  call moonlight#highlight('CursorLineNr', s:palette.fg, s:palette.none)
 else
-  call gruvbox_genmzy#highlight('CursorLineNr', s:palette.fg, s:palette.bg1)
+  call moonlight#highlight('CursorLineNr', s:palette.fg, s:palette.bg1)
 endif
-call gruvbox_genmzy#highlight('DiffAdd', s:palette.none, s:palette.bg_green)
-call gruvbox_genmzy#highlight('DiffChange', s:palette.none, s:palette.bg_blue)
-call gruvbox_genmzy#highlight('DiffDelete', s:palette.none, s:palette.bg_red)
-call gruvbox_genmzy#highlight('DiffText', s:palette.bg0, s:palette.fg)
-call gruvbox_genmzy#highlight('Directory', s:palette.green, s:palette.none)
-call gruvbox_genmzy#highlight('ErrorMsg', s:palette.red, s:palette.none, 'bold,underline')
-call gruvbox_genmzy#highlight('WarningMsg', s:palette.yellow, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('ModeMsg', s:palette.fg, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('MoreMsg', s:palette.yellow, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('MatchParen', s:palette.none, s:palette.bg4)
-call gruvbox_genmzy#highlight('NonText', s:palette.bg4, s:palette.none)
-call gruvbox_genmzy#highlight('Whitespace', s:palette.bg3, s:palette.none)
-call gruvbox_genmzy#highlight('SpecialKey', s:palette.bg3, s:palette.none)
-call gruvbox_genmzy#highlight('Pmenu', s:palette.fg, s:palette.bg2)
-call gruvbox_genmzy#highlight('PmenuSbar', s:palette.none, s:palette.bg2)
-call gruvbox_genmzy#highlight('PmenuSel', s:palette.bg0, s:palette.blue, 'bold')
+call moonlight#highlight('DiffAdd', s:palette.none, s:palette.bg_green)
+call moonlight#highlight('DiffChange', s:palette.none, s:palette.bg_blue)
+call moonlight#highlight('DiffDelete', s:palette.none, s:palette.bg_red)
+call moonlight#highlight('DiffText', s:palette.bg0, s:palette.fg)
+call moonlight#highlight('Directory', s:palette.green, s:palette.none)
+call moonlight#highlight('ErrorMsg', s:palette.red, s:palette.none, 'bold,underline')
+call moonlight#highlight('WarningMsg', s:palette.yellow, s:palette.none, 'bold')
+call moonlight#highlight('ModeMsg', s:palette.fg, s:palette.none, 'bold')
+call moonlight#highlight('MoreMsg', s:palette.yellow, s:palette.none, 'bold')
+call moonlight#highlight('MatchParen', s:palette.none, s:palette.bg4)
+call moonlight#highlight('NonText', s:palette.bg4, s:palette.none)
+call moonlight#highlight('Whitespace', s:palette.bg3, s:palette.none)
+call moonlight#highlight('SpecialKey', s:palette.bg3, s:palette.none)
+call moonlight#highlight('Pmenu', s:palette.fg, s:palette.bg2)
+call moonlight#highlight('PmenuSbar', s:palette.none, s:palette.bg2)
+call moonlight#highlight('PmenuSel', s:palette.bg0, s:palette.blue, 'bold')
 highlight! link WildMenu PmenuSel
-call gruvbox_genmzy#highlight('PmenuThumb', s:palette.none, s:palette.grey0)
-call gruvbox_genmzy#highlight('NormalFloat', s:palette.fg, s:palette.bg2)
-call gruvbox_genmzy#highlight('Question', s:palette.yellow, s:palette.none)
-call gruvbox_genmzy#highlight('SpellBad', s:palette.red, s:palette.none, 'undercurl', s:palette.red)
-call gruvbox_genmzy#highlight('SpellCap', s:palette.blue, s:palette.none, 'undercurl', s:palette.blue)
-call gruvbox_genmzy#highlight('SpellLocal', s:palette.aqua, s:palette.none, 'undercurl', s:palette.aqua)
-call gruvbox_genmzy#highlight('SpellRare', s:palette.purple, s:palette.none, 'undercurl', s:palette.purple)
-call gruvbox_genmzy#highlight('StatusLine', s:palette.grey1, s:palette.bg1)
-call gruvbox_genmzy#highlight('StatusLineTerm', s:palette.grey1, s:palette.bg1)
-call gruvbox_genmzy#highlight('StatusLineNC', s:palette.grey1, s:palette.bg0)
-call gruvbox_genmzy#highlight('StatusLineTermNC', s:palette.grey1, s:palette.bg0)
-call gruvbox_genmzy#highlight('TabLine', s:palette.grey2, s:palette.bg3)
-call gruvbox_genmzy#highlight('TabLineFill', s:palette.grey1, s:palette.bg1)
-call gruvbox_genmzy#highlight('TabLineSel', s:palette.bg0, s:palette.statusline1)
-call gruvbox_genmzy#highlight('VertSplit', s:palette.bg4, s:palette.none)
-call gruvbox_genmzy#highlight('Visual', s:palette.none, s:palette.bg_visual)
-call gruvbox_genmzy#highlight('VisualNOS', s:palette.none, s:palette.bg_visual)
-call gruvbox_genmzy#highlight('QuickFixLine', s:palette.purple, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('Debug', s:palette.orange, s:palette.none)
-call gruvbox_genmzy#highlight('debugPC', s:palette.bg0, s:palette.green)
-call gruvbox_genmzy#highlight('debugBreakpoint', s:palette.bg0, s:palette.red)
-call gruvbox_genmzy#highlight('ToolbarButton', s:palette.bg0, s:palette.green)
+call moonlight#highlight('PmenuThumb', s:palette.none, s:palette.grey0)
+call moonlight#highlight('NormalFloat', s:palette.fg, s:palette.bg2)
+call moonlight#highlight('Question', s:palette.yellow, s:palette.none)
+call moonlight#highlight('SpellBad', s:palette.red, s:palette.none, 'undercurl', s:palette.red)
+call moonlight#highlight('SpellCap', s:palette.blue, s:palette.none, 'undercurl', s:palette.blue)
+call moonlight#highlight('SpellLocal', s:palette.aqua, s:palette.none, 'undercurl', s:palette.aqua)
+call moonlight#highlight('SpellRare', s:palette.purple, s:palette.none, 'undercurl', s:palette.purple)
+call moonlight#highlight('StatusLine', s:palette.grey1, s:palette.bg1)
+call moonlight#highlight('StatusLineTerm', s:palette.grey1, s:palette.bg1)
+call moonlight#highlight('StatusLineNC', s:palette.grey1, s:palette.bg0)
+call moonlight#highlight('StatusLineTermNC', s:palette.grey1, s:palette.bg0)
+call moonlight#highlight('TabLine', s:palette.grey2, s:palette.bg3)
+call moonlight#highlight('TabLineFill', s:palette.grey1, s:palette.bg1)
+call moonlight#highlight('TabLineSel', s:palette.bg0, s:palette.statusline1)
+call moonlight#highlight('VertSplit', s:palette.bg4, s:palette.none)
+call moonlight#highlight('Visual', s:palette.none, s:palette.bg_visual)
+call moonlight#highlight('VisualNOS', s:palette.none, s:palette.bg_visual)
+call moonlight#highlight('QuickFixLine', s:palette.purple, s:palette.none, 'bold')
+call moonlight#highlight('Debug', s:palette.orange, s:palette.none)
+call moonlight#highlight('debugPC', s:palette.bg0, s:palette.green)
+call moonlight#highlight('debugBreakpoint', s:palette.bg0, s:palette.red)
+call moonlight#highlight('ToolbarButton', s:palette.bg0, s:palette.green)
 if has('nvim')
-  call gruvbox_genmzy#highlight('Substitute', s:palette.bg0, s:palette.yellow)
+  call moonlight#highlight('Substitute', s:palette.bg0, s:palette.yellow)
   highlight! link LspDiagnosticsFloatingError ErrorFloat
   highlight! link LspDiagnosticsFloatingWarning WarningFloat
   highlight! link LspDiagnosticsFloatingInformation InfoFloat
@@ -149,124 +149,124 @@ if has('nvim')
 endif
 " }}}
 " Syntax: {{{
-call gruvbox_genmzy#highlight('Boolean', s:palette.purple, s:palette.none)
-call gruvbox_genmzy#highlight('Number', s:palette.purple, s:palette.none)
-call gruvbox_genmzy#highlight('Float', s:palette.purple, s:palette.none)
+call moonlight#highlight('Boolean', s:palette.purple, s:palette.none)
+call moonlight#highlight('Number', s:palette.purple, s:palette.none)
+call moonlight#highlight('Float', s:palette.purple, s:palette.none)
 if s:configuration.enable_italic
-  call gruvbox_genmzy#highlight('PreProc', s:palette.purple, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('PreCondit', s:palette.purple, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('Include', s:palette.purple, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('Define', s:palette.purple, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('Conditional', s:palette.red, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('Repeat', s:palette.aqua, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('Keyword', s:palette.red, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('Typedef', s:palette.red, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('Exception', s:palette.red, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('Statement', s:palette.red, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('Label', s:palette.orange, s:palette.none, 'italic')
+  call moonlight#highlight('PreProc', s:palette.purple, s:palette.none, 'italic')
+  call moonlight#highlight('PreCondit', s:palette.purple, s:palette.none, 'italic')
+  call moonlight#highlight('Include', s:palette.purple, s:palette.none, 'italic')
+  call moonlight#highlight('Define', s:palette.purple, s:palette.none, 'italic')
+  call moonlight#highlight('Conditional', s:palette.red, s:palette.none, 'italic')
+  call moonlight#highlight('Repeat', s:palette.aqua, s:palette.none, 'italic')
+  call moonlight#highlight('Keyword', s:palette.red, s:palette.none, 'italic')
+  call moonlight#highlight('Typedef', s:palette.red, s:palette.none, 'italic')
+  call moonlight#highlight('Exception', s:palette.red, s:palette.none, 'italic')
+  call moonlight#highlight('Statement', s:palette.red, s:palette.none, 'italic')
+  call moonlight#highlight('Label', s:palette.orange, s:palette.none, 'italic')
 else
-  call gruvbox_genmzy#highlight('PreProc', s:palette.purple, s:palette.none)
-  call gruvbox_genmzy#highlight('PreCondit', s:palette.purple, s:palette.none)
-  call gruvbox_genmzy#highlight('Include', s:palette.purple, s:palette.none)
-  call gruvbox_genmzy#highlight('Define', s:palette.purple, s:palette.none)
-  call gruvbox_genmzy#highlight('Conditional', s:palette.red, s:palette.none)
-  call gruvbox_genmzy#highlight('Repeat', s:palette.aqua, s:palette.none)
-  call gruvbox_genmzy#highlight('Keyword', s:palette.red, s:palette.none)
-  call gruvbox_genmzy#highlight('Typedef', s:palette.red, s:palette.none)
-  call gruvbox_genmzy#highlight('Exception', s:palette.red, s:palette.none)
-  call gruvbox_genmzy#highlight('Statement', s:palette.red, s:palette.none)
-  call gruvbox_genmzy#highlight('Label', s:palette.orange, s:palette.none)
+  call moonlight#highlight('PreProc', s:palette.purple, s:palette.none)
+  call moonlight#highlight('PreCondit', s:palette.purple, s:palette.none)
+  call moonlight#highlight('Include', s:palette.purple, s:palette.none)
+  call moonlight#highlight('Define', s:palette.purple, s:palette.none)
+  call moonlight#highlight('Conditional', s:palette.red, s:palette.none)
+  call moonlight#highlight('Repeat', s:palette.aqua, s:palette.none)
+  call moonlight#highlight('Keyword', s:palette.red, s:palette.none)
+  call moonlight#highlight('Typedef', s:palette.red, s:palette.none)
+  call moonlight#highlight('Exception', s:palette.red, s:palette.none)
+  call moonlight#highlight('Statement', s:palette.red, s:palette.none)
+  call moonlight#highlight('Label', s:palette.orange, s:palette.none)
 endif
-call gruvbox_genmzy#highlight('Error', s:palette.red, s:palette.none)
-call gruvbox_genmzy#highlight('StorageClass', s:palette.orange, s:palette.none)
-call gruvbox_genmzy#highlight('Tag', s:palette.orange, s:palette.none)
-call gruvbox_genmzy#highlight('Structure', s:palette.orange, s:palette.none)
-call gruvbox_genmzy#highlight('Operator', s:palette.orange, s:palette.none)
-call gruvbox_genmzy#highlight('Title', s:palette.orange, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('Special', s:palette.yellow, s:palette.none)
-call gruvbox_genmzy#highlight('SpecialChar', s:palette.yellow, s:palette.none)
-call gruvbox_genmzy#highlight('Type', s:palette.yellow, s:palette.none)
-call gruvbox_genmzy#highlight('Function', s:palette.blue, s:palette.none)
-call gruvbox_genmzy#highlight('String', s:palette.green, s:palette.none)
-call gruvbox_genmzy#highlight('Character', s:palette.green, s:palette.none)
-call gruvbox_genmzy#highlight('Constant', s:palette.aqua, s:palette.none)
-call gruvbox_genmzy#highlight('Macro', s:palette.aqua, s:palette.none)
-call gruvbox_genmzy#highlight('Identifier', s:palette.blue, s:palette.none)
+call moonlight#highlight('Error', s:palette.red, s:palette.none)
+call moonlight#highlight('StorageClass', s:palette.orange, s:palette.none)
+call moonlight#highlight('Tag', s:palette.orange, s:palette.none)
+call moonlight#highlight('Structure', s:palette.orange, s:palette.none)
+call moonlight#highlight('Operator', s:palette.orange, s:palette.none)
+call moonlight#highlight('Title', s:palette.orange, s:palette.none, 'bold')
+call moonlight#highlight('Special', s:palette.yellow, s:palette.none)
+call moonlight#highlight('SpecialChar', s:palette.yellow, s:palette.none)
+call moonlight#highlight('Type', s:palette.yellow, s:palette.none)
+call moonlight#highlight('Function', s:palette.blue, s:palette.none)
+call moonlight#highlight('String', s:palette.green, s:palette.none)
+call moonlight#highlight('Character', s:palette.green, s:palette.none)
+call moonlight#highlight('Constant', s:palette.aqua, s:palette.none)
+call moonlight#highlight('Macro', s:palette.aqua, s:palette.none)
+call moonlight#highlight('Identifier', s:palette.blue, s:palette.none)
 if s:configuration.disable_italic_comment
-  call gruvbox_genmzy#highlight('Comment', s:palette.grey1, s:palette.none)
-  call gruvbox_genmzy#highlight('SpecialComment', s:palette.grey1, s:palette.none)
-  call gruvbox_genmzy#highlight('Todo', s:palette.purple, s:palette.none)
+  call moonlight#highlight('Comment', s:palette.grey1, s:palette.none)
+  call moonlight#highlight('SpecialComment', s:palette.grey1, s:palette.none)
+  call moonlight#highlight('Todo', s:palette.purple, s:palette.none)
 else
-  call gruvbox_genmzy#highlight('Comment', s:palette.grey1, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('SpecialComment', s:palette.grey1, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('Todo', s:palette.purple, s:palette.none, 'italic')
+  call moonlight#highlight('Comment', s:palette.grey1, s:palette.none, 'italic')
+  call moonlight#highlight('SpecialComment', s:palette.grey1, s:palette.none, 'italic')
+  call moonlight#highlight('Todo', s:palette.purple, s:palette.none, 'italic')
 endif
-call gruvbox_genmzy#highlight('Delimiter', s:palette.fg, s:palette.none)
-call gruvbox_genmzy#highlight('Ignore', s:palette.grey1, s:palette.none)
-call gruvbox_genmzy#highlight('Underlined', s:palette.none, s:palette.none, 'underline')
+call moonlight#highlight('Delimiter', s:palette.fg, s:palette.none)
+call moonlight#highlight('Ignore', s:palette.grey1, s:palette.none)
+call moonlight#highlight('Underlined', s:palette.none, s:palette.none, 'underline')
 " }}}
 " Predefined Highlight Groups: {{{
-call gruvbox_genmzy#highlight('Fg', s:palette.fg, s:palette.none)
-call gruvbox_genmzy#highlight('Grey', s:palette.grey1, s:palette.none)
-call gruvbox_genmzy#highlight('Red', s:palette.red, s:palette.none)
-call gruvbox_genmzy#highlight('Orange', s:palette.orange, s:palette.none)
-call gruvbox_genmzy#highlight('Yellow', s:palette.yellow, s:palette.none)
-call gruvbox_genmzy#highlight('Green', s:palette.green, s:palette.none)
-call gruvbox_genmzy#highlight('Aqua', s:palette.aqua, s:palette.none)
-call gruvbox_genmzy#highlight('Blue', s:palette.blue, s:palette.none)
-call gruvbox_genmzy#highlight('Purple', s:palette.purple, s:palette.none)
+call moonlight#highlight('Fg', s:palette.fg, s:palette.none)
+call moonlight#highlight('Grey', s:palette.grey1, s:palette.none)
+call moonlight#highlight('Red', s:palette.red, s:palette.none)
+call moonlight#highlight('Orange', s:palette.orange, s:palette.none)
+call moonlight#highlight('Yellow', s:palette.yellow, s:palette.none)
+call moonlight#highlight('Green', s:palette.green, s:palette.none)
+call moonlight#highlight('Aqua', s:palette.aqua, s:palette.none)
+call moonlight#highlight('Blue', s:palette.blue, s:palette.none)
+call moonlight#highlight('Purple', s:palette.purple, s:palette.none)
 if s:configuration.enable_italic
-  call gruvbox_genmzy#highlight('RedItalic', s:palette.red, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('OrangeItalic', s:palette.orange, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('YellowItalic', s:palette.yellow, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('GreenItalic', s:palette.green, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('AquaItalic', s:palette.aqua, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('BlueItalic', s:palette.blue, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('PurpleItalic', s:palette.purple, s:palette.none, 'italic')
-  call gruvbox_genmzy#highlight('GreyItalic', s:palette.grey1, s:palette.none, 'italic')
+  call moonlight#highlight('RedItalic', s:palette.red, s:palette.none, 'italic')
+  call moonlight#highlight('OrangeItalic', s:palette.orange, s:palette.none, 'italic')
+  call moonlight#highlight('YellowItalic', s:palette.yellow, s:palette.none, 'italic')
+  call moonlight#highlight('GreenItalic', s:palette.green, s:palette.none, 'italic')
+  call moonlight#highlight('AquaItalic', s:palette.aqua, s:palette.none, 'italic')
+  call moonlight#highlight('BlueItalic', s:palette.blue, s:palette.none, 'italic')
+  call moonlight#highlight('PurpleItalic', s:palette.purple, s:palette.none, 'italic')
+  call moonlight#highlight('GreyItalic', s:palette.grey1, s:palette.none, 'italic')
 else
-  call gruvbox_genmzy#highlight('RedItalic', s:palette.red, s:palette.none)
-  call gruvbox_genmzy#highlight('OrangeItalic', s:palette.orange, s:palette.none)
-  call gruvbox_genmzy#highlight('YellowItalic', s:palette.yellow, s:palette.none)
-  call gruvbox_genmzy#highlight('GreenItalic', s:palette.green, s:palette.none)
-  call gruvbox_genmzy#highlight('AquaItalic', s:palette.aqua, s:palette.none)
-  call gruvbox_genmzy#highlight('BlueItalic', s:palette.blue, s:palette.none)
-  call gruvbox_genmzy#highlight('PurpleItalic', s:palette.purple, s:palette.none)
-  call gruvbox_genmzy#highlight('GreyItalic', s:palette.grey1, s:palette.none)
+  call moonlight#highlight('RedItalic', s:palette.red, s:palette.none)
+  call moonlight#highlight('OrangeItalic', s:palette.orange, s:palette.none)
+  call moonlight#highlight('YellowItalic', s:palette.yellow, s:palette.none)
+  call moonlight#highlight('GreenItalic', s:palette.green, s:palette.none)
+  call moonlight#highlight('AquaItalic', s:palette.aqua, s:palette.none)
+  call moonlight#highlight('BlueItalic', s:palette.blue, s:palette.none)
+  call moonlight#highlight('PurpleItalic', s:palette.purple, s:palette.none)
+  call moonlight#highlight('GreyItalic', s:palette.grey1, s:palette.none)
 endif
 if s:configuration.transparent_background || s:configuration.sign_column_background !=# 'default'
-  call gruvbox_genmzy#highlight('RedSign', s:palette.red, s:palette.none)
-  call gruvbox_genmzy#highlight('OrangeSign', s:palette.orange, s:palette.none)
-  call gruvbox_genmzy#highlight('YellowSign', s:palette.yellow, s:palette.none)
-  call gruvbox_genmzy#highlight('GreenSign', s:palette.green, s:palette.none)
-  call gruvbox_genmzy#highlight('AquaSign', s:palette.aqua, s:palette.none)
-  call gruvbox_genmzy#highlight('BlueSign', s:palette.blue, s:palette.none)
-  call gruvbox_genmzy#highlight('PurpleSign', s:palette.purple, s:palette.none)
+  call moonlight#highlight('RedSign', s:palette.red, s:palette.none)
+  call moonlight#highlight('OrangeSign', s:palette.orange, s:palette.none)
+  call moonlight#highlight('YellowSign', s:palette.yellow, s:palette.none)
+  call moonlight#highlight('GreenSign', s:palette.green, s:palette.none)
+  call moonlight#highlight('AquaSign', s:palette.aqua, s:palette.none)
+  call moonlight#highlight('BlueSign', s:palette.blue, s:palette.none)
+  call moonlight#highlight('PurpleSign', s:palette.purple, s:palette.none)
 else
-  call gruvbox_genmzy#highlight('RedSign', s:palette.red, s:palette.bg1)
-  call gruvbox_genmzy#highlight('OrangeSign', s:palette.orange, s:palette.bg1)
-  call gruvbox_genmzy#highlight('YellowSign', s:palette.yellow, s:palette.bg1)
-  call gruvbox_genmzy#highlight('GreenSign', s:palette.green, s:palette.bg1)
-  call gruvbox_genmzy#highlight('AquaSign', s:palette.aqua, s:palette.bg1)
-  call gruvbox_genmzy#highlight('BlueSign', s:palette.blue, s:palette.bg1)
-  call gruvbox_genmzy#highlight('PurpleSign', s:palette.purple, s:palette.bg1)
+  call moonlight#highlight('RedSign', s:palette.red, s:palette.bg1)
+  call moonlight#highlight('OrangeSign', s:palette.orange, s:palette.bg1)
+  call moonlight#highlight('YellowSign', s:palette.yellow, s:palette.bg1)
+  call moonlight#highlight('GreenSign', s:palette.green, s:palette.bg1)
+  call moonlight#highlight('AquaSign', s:palette.aqua, s:palette.bg1)
+  call moonlight#highlight('BlueSign', s:palette.blue, s:palette.bg1)
+  call moonlight#highlight('PurpleSign', s:palette.purple, s:palette.bg1)
 endif
 if s:configuration.diagnostic_text_highlight
-  call gruvbox_genmzy#highlight('ErrorText', s:palette.none, s:palette.bg_red, 'undercurl', s:palette.red)
-  call gruvbox_genmzy#highlight('WarningText', s:palette.none, s:palette.bg_yellow, 'undercurl', s:palette.yellow)
-  call gruvbox_genmzy#highlight('InfoText', s:palette.none, s:palette.bg_blue, 'undercurl', s:palette.blue)
-  call gruvbox_genmzy#highlight('HintText', s:palette.none, s:palette.bg_green, 'undercurl', s:palette.green)
+  call moonlight#highlight('ErrorText', s:palette.none, s:palette.bg_red, 'undercurl', s:palette.red)
+  call moonlight#highlight('WarningText', s:palette.none, s:palette.bg_yellow, 'undercurl', s:palette.yellow)
+  call moonlight#highlight('InfoText', s:palette.none, s:palette.bg_blue, 'undercurl', s:palette.blue)
+  call moonlight#highlight('HintText', s:palette.none, s:palette.bg_green, 'undercurl', s:palette.green)
 else
-  call gruvbox_genmzy#highlight('ErrorText', s:palette.none, s:palette.none, 'undercurl', s:palette.red)
-  call gruvbox_genmzy#highlight('WarningText', s:palette.none, s:palette.none, 'undercurl', s:palette.yellow)
-  call gruvbox_genmzy#highlight('InfoText', s:palette.none, s:palette.none, 'undercurl', s:palette.blue)
-  call gruvbox_genmzy#highlight('HintText', s:palette.none, s:palette.none, 'undercurl', s:palette.green)
+  call moonlight#highlight('ErrorText', s:palette.none, s:palette.none, 'undercurl', s:palette.red)
+  call moonlight#highlight('WarningText', s:palette.none, s:palette.none, 'undercurl', s:palette.yellow)
+  call moonlight#highlight('InfoText', s:palette.none, s:palette.none, 'undercurl', s:palette.blue)
+  call moonlight#highlight('HintText', s:palette.none, s:palette.none, 'undercurl', s:palette.green)
 endif
 if s:configuration.diagnostic_line_highlight
-  call gruvbox_genmzy#highlight('ErrorLine', s:palette.none, s:palette.bg_red)
-  call gruvbox_genmzy#highlight('WarningLine', s:palette.none, s:palette.bg_yellow)
-  call gruvbox_genmzy#highlight('InfoLine', s:palette.none, s:palette.bg_blue)
-  call gruvbox_genmzy#highlight('HintLine', s:palette.none, s:palette.bg_green)
+  call moonlight#highlight('ErrorLine', s:palette.none, s:palette.bg_red)
+  call moonlight#highlight('WarningLine', s:palette.none, s:palette.bg_yellow)
+  call moonlight#highlight('InfoLine', s:palette.none, s:palette.bg_blue)
+  call moonlight#highlight('HintLine', s:palette.none, s:palette.bg_green)
 else
   highlight clear ErrorLine
   highlight clear WarningLine
@@ -284,16 +284,16 @@ else
   highlight! link VirtualTextInfo Blue
   highlight! link VirtualTextHint Green
 endif
-call gruvbox_genmzy#highlight('ErrorFloat', s:palette.red, s:palette.bg2)
-call gruvbox_genmzy#highlight('WarningFloat', s:palette.yellow, s:palette.bg2)
-call gruvbox_genmzy#highlight('InfoFloat', s:palette.blue, s:palette.bg2)
-call gruvbox_genmzy#highlight('HintFloat', s:palette.green, s:palette.bg2)
+call moonlight#highlight('ErrorFloat', s:palette.red, s:palette.bg2)
+call moonlight#highlight('WarningFloat', s:palette.yellow, s:palette.bg2)
+call moonlight#highlight('InfoFloat', s:palette.blue, s:palette.bg2)
+call moonlight#highlight('HintFloat', s:palette.green, s:palette.bg2)
 if &diff
-  call gruvbox_genmzy#highlight('CurrentWord', s:palette.bg0, s:palette.green)
+  call moonlight#highlight('CurrentWord', s:palette.bg0, s:palette.green)
 elseif s:configuration.current_word ==# 'grey background'
-  call gruvbox_genmzy#highlight('CurrentWord', s:palette.none, s:palette.bg2)
+  call moonlight#highlight('CurrentWord', s:palette.none, s:palette.bg2)
 else
-  call gruvbox_genmzy#highlight('CurrentWord', s:palette.none, s:palette.none, s:configuration.current_word)
+  call moonlight#highlight('CurrentWord', s:palette.none, s:palette.none, s:configuration.current_word)
 endif
 " }}}
 " }}}
@@ -390,7 +390,7 @@ highlight! link TSVariable NONE
 highlight! link TSVariableBuiltin Aqua
 " }}}
 " neoclide/coc.nvim {{{
-call gruvbox_genmzy#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
+call moonlight#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
 highlight! link CocErrorFloat ErrorFloat
 highlight! link CocWarningFloat WarningFloat
 highlight! link CocInfoFloat InfoFloat
@@ -514,28 +514,28 @@ highlight! link SyntasticWarningLine WarningLine
 " }}}
 " Yggdroot/LeaderF {{{
 if !exists('g:Lf_StlColorscheme')
-  let g:Lf_StlColorscheme = 'gruvbox_genmzy'
+  let g:Lf_StlColorscheme = 'moonlight'
 endif
 if !exists('g:Lf_PopupColorscheme')
-  let g:Lf_PopupColorscheme = 'gruvbox_genmzy'
+  let g:Lf_PopupColorscheme = 'moonlight'
 endif
-call gruvbox_genmzy#highlight('Lf_hl_match', s:palette.green, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('Lf_hl_match0', s:palette.green, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('Lf_hl_match1', s:palette.aqua, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('Lf_hl_match2', s:palette.blue, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('Lf_hl_match3', s:palette.purple, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('Lf_hl_match4', s:palette.orange, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('Lf_hl_matchRefine', s:palette.red, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('Lf_hl_popup_normalMode', s:palette.bg0, s:palette.red, 'bold')
-call gruvbox_genmzy#highlight('Lf_hl_popup_inputMode', s:palette.bg0, s:palette.green, 'bold')
-call gruvbox_genmzy#highlight('Lf_hl_popup_category', s:palette.fg, s:palette.bg4)
-call gruvbox_genmzy#highlight('Lf_hl_popup_nameOnlyMode', s:palette.fg, s:palette.bg3)
-call gruvbox_genmzy#highlight('Lf_hl_popup_fullPathMode', s:palette.fg, s:palette.bg3)
-call gruvbox_genmzy#highlight('Lf_hl_popup_fuzzyMode', s:palette.fg, s:palette.bg3)
-call gruvbox_genmzy#highlight('Lf_hl_popup_regexMode', s:palette.fg, s:palette.bg3)
-call gruvbox_genmzy#highlight('Lf_hl_popup_lineInfo', s:palette.yellow, s:palette.bg4)
-call gruvbox_genmzy#highlight('Lf_hl_popup_total', s:palette.bg0, s:palette.orange)
-call gruvbox_genmzy#highlight('Lf_hl_popup_cursor', s:palette.bg0, s:palette.green)
+call moonlight#highlight('Lf_hl_match', s:palette.green, s:palette.none, 'bold')
+call moonlight#highlight('Lf_hl_match0', s:palette.green, s:palette.none, 'bold')
+call moonlight#highlight('Lf_hl_match1', s:palette.aqua, s:palette.none, 'bold')
+call moonlight#highlight('Lf_hl_match2', s:palette.blue, s:palette.none, 'bold')
+call moonlight#highlight('Lf_hl_match3', s:palette.purple, s:palette.none, 'bold')
+call moonlight#highlight('Lf_hl_match4', s:palette.orange, s:palette.none, 'bold')
+call moonlight#highlight('Lf_hl_matchRefine', s:palette.red, s:palette.none, 'bold')
+call moonlight#highlight('Lf_hl_popup_normalMode', s:palette.bg0, s:palette.red, 'bold')
+call moonlight#highlight('Lf_hl_popup_inputMode', s:palette.bg0, s:palette.green, 'bold')
+call moonlight#highlight('Lf_hl_popup_category', s:palette.fg, s:palette.bg4)
+call moonlight#highlight('Lf_hl_popup_nameOnlyMode', s:palette.fg, s:palette.bg3)
+call moonlight#highlight('Lf_hl_popup_fullPathMode', s:palette.fg, s:palette.bg3)
+call moonlight#highlight('Lf_hl_popup_fuzzyMode', s:palette.fg, s:palette.bg3)
+call moonlight#highlight('Lf_hl_popup_regexMode', s:palette.fg, s:palette.bg3)
+call moonlight#highlight('Lf_hl_popup_lineInfo', s:palette.yellow, s:palette.bg4)
+call moonlight#highlight('Lf_hl_popup_total', s:palette.bg0, s:palette.orange)
+call moonlight#highlight('Lf_hl_popup_cursor', s:palette.bg0, s:palette.green)
 highlight! link Lf_hl_cursorline Fg
 highlight! link Lf_hl_selection DiffAdd
 highlight! link Lf_hl_rgHighlight Visual
@@ -548,18 +548,18 @@ highlight! link Lf_hl_popup_blank Lf_hl_popup_window
 highlight! link Lf_hl_popup_spin Red
 " }}}
 " liuchengxu/vim-clap {{{
-call gruvbox_genmzy#highlight('ClapSelected', s:palette.red, s:palette.bg2, 'bold')
-call gruvbox_genmzy#highlight('ClapCurrentSelection', s:palette.orange, s:palette.bg2, 'bold')
-call gruvbox_genmzy#highlight('ClapBlines', s:palette.fg, s:palette.bg2)
-call gruvbox_genmzy#highlight('ClapProviderId', s:palette.fg, s:palette.bg2, 'bold')
-call gruvbox_genmzy#highlight('ClapMatches1', s:palette.red, s:palette.bg2, 'bold')
-call gruvbox_genmzy#highlight('ClapMatches2', s:palette.orange, s:palette.bg2, 'bold')
-call gruvbox_genmzy#highlight('ClapMatches3', s:palette.yellow, s:palette.bg2, 'bold')
-call gruvbox_genmzy#highlight('ClapMatches4', s:palette.aqua, s:palette.bg2, 'bold')
-call gruvbox_genmzy#highlight('ClapMatches5', s:palette.blue, s:palette.bg2, 'bold')
-call gruvbox_genmzy#highlight('ClapMatches6', s:palette.purple, s:palette.bg2, 'bold')
-call gruvbox_genmzy#highlight('ClapFuzzyMatches', s:palette.green, s:palette.bg2, 'bold')
-call gruvbox_genmzy#highlight('ClapNoMatchesFound', s:palette.red, s:palette.bg2, 'bold')
+call moonlight#highlight('ClapSelected', s:palette.red, s:palette.bg2, 'bold')
+call moonlight#highlight('ClapCurrentSelection', s:palette.orange, s:palette.bg2, 'bold')
+call moonlight#highlight('ClapBlines', s:palette.fg, s:palette.bg2)
+call moonlight#highlight('ClapProviderId', s:palette.fg, s:palette.bg2, 'bold')
+call moonlight#highlight('ClapMatches1', s:palette.red, s:palette.bg2, 'bold')
+call moonlight#highlight('ClapMatches2', s:palette.orange, s:palette.bg2, 'bold')
+call moonlight#highlight('ClapMatches3', s:palette.yellow, s:palette.bg2, 'bold')
+call moonlight#highlight('ClapMatches4', s:palette.aqua, s:palette.bg2, 'bold')
+call moonlight#highlight('ClapMatches5', s:palette.blue, s:palette.bg2, 'bold')
+call moonlight#highlight('ClapMatches6', s:palette.purple, s:palette.bg2, 'bold')
+call moonlight#highlight('ClapFuzzyMatches', s:palette.green, s:palette.bg2, 'bold')
+call moonlight#highlight('ClapNoMatchesFound', s:palette.red, s:palette.bg2, 'bold')
 highlight! link ClapInput Pmenu
 highlight! link ClapDisplay Pmenu
 highlight! link ClapPreview Pmenu
@@ -596,26 +596,26 @@ let g:fzf_colors = {
       \ }
 " }}}
 " nvim-telescope/telescope.nvim {{{
-call gruvbox_genmzy#highlight('TelescopeMatching', s:palette.green, s:palette.none, 'bold')
+call moonlight#highlight('TelescopeMatching', s:palette.green, s:palette.none, 'bold')
 highlight! link TelescopeBorder Grey
 highlight! link TelescopePromptPrefix Orange
 highlight! link TelescopeSelection DiffAdd
 " }}}
 " Shougo/denite.nvim {{{
-call gruvbox_genmzy#highlight('deniteMatchedChar', s:palette.green, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('deniteMatchedRange', s:palette.green, s:palette.none, 'bold,underline')
-call gruvbox_genmzy#highlight('deniteInput', s:palette.green, s:palette.bg3, 'bold')
-call gruvbox_genmzy#highlight('deniteStatusLineNumber', s:palette.purple, s:palette.bg3)
-call gruvbox_genmzy#highlight('deniteStatusLinePath', s:palette.fg, s:palette.bg3)
+call moonlight#highlight('deniteMatchedChar', s:palette.green, s:palette.none, 'bold')
+call moonlight#highlight('deniteMatchedRange', s:palette.green, s:palette.none, 'bold,underline')
+call moonlight#highlight('deniteInput', s:palette.green, s:palette.bg3, 'bold')
+call moonlight#highlight('deniteStatusLineNumber', s:palette.purple, s:palette.bg3)
+call moonlight#highlight('deniteStatusLinePath', s:palette.fg, s:palette.bg3)
 highlight! link deniteSelectedLin Green
 " }}}
 " kien/ctrlp.vim {{{
-call gruvbox_genmzy#highlight('CtrlPMatch', s:palette.green, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('CtrlPPrtBase', s:palette.bg3, s:palette.none)
-call gruvbox_genmzy#highlight('CtrlPLinePre', s:palette.bg3, s:palette.none)
-call gruvbox_genmzy#highlight('CtrlPMode1', s:palette.blue, s:palette.bg3, 'bold')
-call gruvbox_genmzy#highlight('CtrlPMode2', s:palette.bg0, s:palette.blue, 'bold')
-call gruvbox_genmzy#highlight('CtrlPStats', s:palette.grey1, s:palette.bg3, 'bold')
+call moonlight#highlight('CtrlPMatch', s:palette.green, s:palette.none, 'bold')
+call moonlight#highlight('CtrlPPrtBase', s:palette.bg3, s:palette.none)
+call moonlight#highlight('CtrlPLinePre', s:palette.bg3, s:palette.none)
+call moonlight#highlight('CtrlPMode1', s:palette.blue, s:palette.bg3, 'bold')
+call moonlight#highlight('CtrlPMode2', s:palette.bg0, s:palette.blue, 'bold')
+call moonlight#highlight('CtrlPStats', s:palette.grey1, s:palette.bg3, 'bold')
 highlight! link CtrlPNoEntries Red
 highlight! link CtrlPPrtCursor Blue
 " }}}
@@ -638,16 +638,16 @@ highlight! link GitSignsDelete RedSign
 highlight! link GitSignsChangeDelete PurpleSign
 " }}}
 " andymass/vim-matchup {{{
-call gruvbox_genmzy#highlight('MatchParenCur', s:palette.none, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('MatchWord', s:palette.none, s:palette.none, 'underline')
-call gruvbox_genmzy#highlight('MatchWordCur', s:palette.none, s:palette.none, 'underline')
+call moonlight#highlight('MatchParenCur', s:palette.none, s:palette.none, 'bold')
+call moonlight#highlight('MatchWord', s:palette.none, s:palette.none, 'underline')
+call moonlight#highlight('MatchWordCur', s:palette.none, s:palette.none, 'underline')
 " }}}
 " easymotion/vim-easymotion {{{
 highlight! link EasyMotionTarget Search
 highlight! link EasyMotionShade Grey
 " }}}
 " justinmk/vim-sneak {{{
-call gruvbox_genmzy#highlight('SneakLabelMask', s:palette.orange, s:palette.orange)
+call moonlight#highlight('SneakLabelMask', s:palette.orange, s:palette.orange)
 highlight! link Sneak Search
 highlight! link SneakLabel Search
 highlight! link SneakScope DiffText
@@ -679,8 +679,8 @@ let g:indentLine_color_term = s:palette.grey1[1]
 " }}}
 " nathanaelkane/vim-indent-guides {{{
 if get(g:, 'indent_guides_auto_colors', 1) == 0
-  call gruvbox_genmzy#highlight('IndentGuidesOdd', s:palette.bg0, s:palette.bg1)
-  call gruvbox_genmzy#highlight('IndentGuidesEven', s:palette.bg0, s:palette.bg2)
+  call moonlight#highlight('IndentGuidesOdd', s:palette.bg0, s:palette.bg1)
+  call moonlight#highlight('IndentGuidesEven', s:palette.bg0, s:palette.bg2)
 endif
 " }}}
 " luochen1990/rainbow {{{
@@ -722,8 +722,8 @@ highlight! link WhichKeyGroup Yellow
 highlight! link WhichKeyDesc Blue
 " }}}
 " unblevable/quick-scope {{{
-call gruvbox_genmzy#highlight('QuickScopePrimary', s:palette.aqua, s:palette.none, 'underline')
-call gruvbox_genmzy#highlight('QuickScopeSecondary', s:palette.blue, s:palette.none, 'underline')
+call moonlight#highlight('QuickScopePrimary', s:palette.aqua, s:palette.none, 'underline')
+call moonlight#highlight('QuickScopeSecondary', s:palette.blue, s:palette.none, 'underline')
 " }}}
 " APZelos/blamer.nvim {{{
 highlight! link Blamer Grey
@@ -758,27 +758,27 @@ highlight! link diffIndexLine Purple
 " }}}
 " }}}
 " Generate the `after/ftplugin` directory based on the comment tags in this file.
-" For example, the content between `ft_begin: sh/zsh` and `ft_end` will be placed in `after/ftplugin/sh/gruvbox_genmzy.vim` and `after/ftplugin/zsh/gruvbox_genmzy.vim`.
-if gruvbox_genmzy#ft_exists(s:path) " If the ftplugin exists.
+" For example, the content between `ft_begin: sh/zsh` and `ft_end` will be placed in `after/ftplugin/sh/moonlight.vim` and `after/ftplugin/zsh/moonlight.vim`.
+if moonlight#ft_exists(s:path) " If the ftplugin exists.
   if s:configuration.better_performance
-    if !gruvbox_genmzy#ft_newest(s:path, s:last_modified) " Regenerate if it's not up to date.
-      call gruvbox_genmzy#ft_clean(s:path, 0)
-      call gruvbox_genmzy#ft_gen(s:path, s:last_modified, 'update')
+    if !moonlight#ft_newest(s:path, s:last_modified) " Regenerate if it's not up to date.
+      call moonlight#ft_clean(s:path, 0)
+      call moonlight#ft_gen(s:path, s:last_modified, 'update')
     endif
     finish
   else
-    call gruvbox_genmzy#ft_clean(s:path, 1)
+    call moonlight#ft_clean(s:path, 1)
   endif
 else
   if s:configuration.better_performance
-    call gruvbox_genmzy#ft_gen(s:path, s:last_modified, 'generate')
+    call moonlight#ft_gen(s:path, s:last_modified, 'generate')
     finish
   endif
 endif
 " ft_begin: vim-plug {{{
 " https://github.com/junegunn/vim-plug
-call gruvbox_genmzy#highlight('plug1', s:palette.orange, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('plugNumber', s:palette.yellow, s:palette.none, 'bold')
+call moonlight#highlight('plug1', s:palette.orange, s:palette.none, 'bold')
+call moonlight#highlight('plugNumber', s:palette.yellow, s:palette.none, 'bold')
 highlight! link plug2 Green
 highlight! link plugBracket Grey
 highlight! link plugName Aqua
@@ -900,7 +900,7 @@ highlight! link QuickmenuHeader Orange
 " ft_end }}}
 " ft_begin: undotree {{{
 " https://github.com/mbbill/undotree
-call gruvbox_genmzy#highlight('UndotreeSavedBig', s:palette.purple, s:palette.none, 'bold')
+call moonlight#highlight('UndotreeSavedBig', s:palette.purple, s:palette.none, 'bold')
 highlight! link UndotreeNode Orange
 highlight! link UndotreeNodeCurrent Red
 highlight! link UndotreeSeq Green
@@ -913,16 +913,16 @@ highlight! link UndotreeSavedSmall Purple
 " ft_end }}}
 " ft_begin: markdown {{{
 " builtin: {{{
-call gruvbox_genmzy#highlight('markdownH1', s:palette.red, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('markdownH2', s:palette.orange, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('markdownH3', s:palette.yellow, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('markdownH4', s:palette.green, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('markdownH5', s:palette.blue, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('markdownH6', s:palette.purple, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('markdownUrl', s:palette.blue, s:palette.none, 'underline')
-call gruvbox_genmzy#highlight('markdownItalic', s:palette.none, s:palette.none, 'italic')
-call gruvbox_genmzy#highlight('markdownBold', s:palette.none, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('markdownItalicDelimiter', s:palette.grey1, s:palette.none, 'italic')
+call moonlight#highlight('markdownH1', s:palette.red, s:palette.none, 'bold')
+call moonlight#highlight('markdownH2', s:palette.orange, s:palette.none, 'bold')
+call moonlight#highlight('markdownH3', s:palette.yellow, s:palette.none, 'bold')
+call moonlight#highlight('markdownH4', s:palette.green, s:palette.none, 'bold')
+call moonlight#highlight('markdownH5', s:palette.blue, s:palette.none, 'bold')
+call moonlight#highlight('markdownH6', s:palette.purple, s:palette.none, 'bold')
+call moonlight#highlight('markdownUrl', s:palette.blue, s:palette.none, 'underline')
+call moonlight#highlight('markdownItalic', s:palette.none, s:palette.none, 'italic')
+call moonlight#highlight('markdownBold', s:palette.none, s:palette.none, 'bold')
+call moonlight#highlight('markdownItalicDelimiter', s:palette.grey1, s:palette.none, 'italic')
 highlight! link markdownCode Green
 highlight! link markdownCodeBlock Aqua
 highlight! link markdownCodeDelimiter Aqua
@@ -942,9 +942,9 @@ highlight! link markdownBoldDelimiter Grey
 highlight! link markdownId Yellow
 " }}}
 " vim-markdown: https://github.com/gabrielelana/vim-markdown {{{
-call gruvbox_genmzy#highlight('mkdURL', s:palette.blue, s:palette.none, 'underline')
-call gruvbox_genmzy#highlight('mkdInlineURL', s:palette.purple, s:palette.none, 'underline')
-call gruvbox_genmzy#highlight('mkdItalic', s:palette.grey1, s:palette.none, 'italic')
+call moonlight#highlight('mkdURL', s:palette.blue, s:palette.none, 'underline')
+call moonlight#highlight('mkdInlineURL', s:palette.purple, s:palette.none, 'underline')
+call moonlight#highlight('mkdItalic', s:palette.grey1, s:palette.none, 'italic')
 highlight! link mkdCodeDelimiter Aqua
 highlight! link mkdBold Grey
 highlight! link mkdLink Purple
@@ -957,7 +957,7 @@ highlight! link mkdId Yellow
 " ft_end }}}
 " ft_begin: rst {{{
 " builtin: https://github.com/marshallward/vim-restructuredtext {{{
-call gruvbox_genmzy#highlight('rstStandaloneHyperlink', s:palette.purple, s:palette.none, 'underline')
+call moonlight#highlight('rstStandaloneHyperlink', s:palette.purple, s:palette.none, 'underline')
 highlight! link rstSubstitutionReference Blue
 highlight! link rstInterpretedTextOrHyperlinkReference Aqua
 highlight! link rstTableLines Grey
@@ -995,20 +995,20 @@ highlight! link texAuthorArg BlueItalic
 " ft_end }}}
 " ft_begin: html/markdown/javascriptreact/typescriptreact {{{
 " builtin: https://notabug.org/jorgesumle/vim-html-syntax {{{
-call gruvbox_genmzy#highlight('htmlH1', s:palette.red, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('htmlH2', s:palette.orange, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('htmlH3', s:palette.yellow, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('htmlH4', s:palette.green, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('htmlH5', s:palette.blue, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('htmlH6', s:palette.purple, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('htmlLink', s:palette.none, s:palette.none, 'underline')
-call gruvbox_genmzy#highlight('htmlBold', s:palette.none, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('htmlBoldUnderline', s:palette.none, s:palette.none, 'bold,underline')
-call gruvbox_genmzy#highlight('htmlBoldItalic', s:palette.none, s:palette.none, 'bold,italic')
-call gruvbox_genmzy#highlight('htmlBoldUnderlineItalic', s:palette.none, s:palette.none, 'bold,underline,italic')
-call gruvbox_genmzy#highlight('htmlUnderline', s:palette.none, s:palette.none, 'underline')
-call gruvbox_genmzy#highlight('htmlUnderlineItalic', s:palette.none, s:palette.none, 'underline,italic')
-call gruvbox_genmzy#highlight('htmlItalic', s:palette.none, s:palette.none, 'italic')
+call moonlight#highlight('htmlH1', s:palette.red, s:palette.none, 'bold')
+call moonlight#highlight('htmlH2', s:palette.orange, s:palette.none, 'bold')
+call moonlight#highlight('htmlH3', s:palette.yellow, s:palette.none, 'bold')
+call moonlight#highlight('htmlH4', s:palette.green, s:palette.none, 'bold')
+call moonlight#highlight('htmlH5', s:palette.blue, s:palette.none, 'bold')
+call moonlight#highlight('htmlH6', s:palette.purple, s:palette.none, 'bold')
+call moonlight#highlight('htmlLink', s:palette.none, s:palette.none, 'underline')
+call moonlight#highlight('htmlBold', s:palette.none, s:palette.none, 'bold')
+call moonlight#highlight('htmlBoldUnderline', s:palette.none, s:palette.none, 'bold,underline')
+call moonlight#highlight('htmlBoldItalic', s:palette.none, s:palette.none, 'bold,italic')
+call moonlight#highlight('htmlBoldUnderlineItalic', s:palette.none, s:palette.none, 'bold,underline,italic')
+call moonlight#highlight('htmlUnderline', s:palette.none, s:palette.none, 'underline')
+call moonlight#highlight('htmlUnderlineItalic', s:palette.none, s:palette.none, 'underline,italic')
+call moonlight#highlight('htmlItalic', s:palette.none, s:palette.none, 'italic')
 highlight! link htmlTag Green
 highlight! link htmlEndTag Blue
 highlight! link htmlTagN OrangeItalic
@@ -1568,7 +1568,7 @@ highlight! link pythonNone Aqua
 highlight! link pythonDot Grey
 " }}}
 " semshi: https://github.com/numirias/semshi {{{
-call gruvbox_genmzy#highlight('semshiUnresolved', s:palette.yellow, s:palette.none, 'undercurl')
+call moonlight#highlight('semshiUnresolved', s:palette.yellow, s:palette.none, 'undercurl')
 highlight! link semshiImported Purple
 highlight! link semshiParameter Blue
 highlight! link semshiParameterUnused Grey
@@ -1895,7 +1895,7 @@ highlight! link ps1BuiltIn Yellow
 " }}}
 " ft_end }}}
 " ft_begin: vim {{{
-call gruvbox_genmzy#highlight('vimCommentTitle', s:palette.grey1, s:palette.none, 'bold')
+call moonlight#highlight('vimCommentTitle', s:palette.grey1, s:palette.none, 'bold')
 highlight! link vimLet Orange
 highlight! link vimFunction Blue
 highlight! link vimIsCommand Fg
@@ -2039,7 +2039,7 @@ highlight! link yamlKey Orange
 highlight! link yamlConstant Purple
 " ft_end }}}
 " ft_begin: toml {{{
-call gruvbox_genmzy#highlight('tomlTable', s:palette.purple, s:palette.none, 'bold')
+call moonlight#highlight('tomlTable', s:palette.purple, s:palette.none, 'bold')
 highlight! link tomlKey Orange
 highlight! link tomlBoolean Aqua
 highlight! link tomlTableArray tomlTable
@@ -2055,17 +2055,17 @@ highlight! link gitcommitArrow Grey
 highlight! link gitcommitFile Green
 " ft_end }}}
 " ft_begin: dosini {{{
-call gruvbox_genmzy#highlight('dosiniHeader', s:palette.red, s:palette.none, 'bold')
+call moonlight#highlight('dosiniHeader', s:palette.red, s:palette.none, 'bold')
 highlight! link dosiniLabel Yellow
 highlight! link dosiniValue Green
 highlight! link dosiniNumber Green
 " ft_end }}}
 " ft_begin: help {{{
-call gruvbox_genmzy#highlight('helpNote', s:palette.purple, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('helpHeadline', s:palette.red, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('helpHeader', s:palette.orange, s:palette.none, 'bold')
-call gruvbox_genmzy#highlight('helpURL', s:palette.green, s:palette.none, 'underline')
-call gruvbox_genmzy#highlight('helpHyperTextEntry', s:palette.yellow, s:palette.none, 'bold')
+call moonlight#highlight('helpNote', s:palette.purple, s:palette.none, 'bold')
+call moonlight#highlight('helpHeadline', s:palette.red, s:palette.none, 'bold')
+call moonlight#highlight('helpHeader', s:palette.orange, s:palette.none, 'bold')
+call moonlight#highlight('helpURL', s:palette.green, s:palette.none, 'underline')
+call moonlight#highlight('helpHyperTextEntry', s:palette.yellow, s:palette.none, 'bold')
 highlight! link helpHyperTextJump Yellow
 highlight! link helpCommand Aqua
 highlight! link helpExample Green
